@@ -43,8 +43,46 @@ namespace MoreAbstractClassesInterfaces
 
     class Smartphone : Device, IText, ICall
     {
+        public void Type()
+        {
+            Console.WriteLine("Type type type");
+        }
+
+        public void Text()
+        {
+            Console.WriteLine("Texting");
+        }
+
+        public void Send()
+        {
+            Console.WriteLine("Sending a text");
+        }
+
+        public void Call()
+        {
+            Console.WriteLine("Placing a call");
+        }
+
+        public void Answer()
+        {
+            Console.WriteLine("Answering inbound call");
+        }
+
+        public Smartphone()
+        {
+            private string name;
+            private string description;
+            private string manufacturer;
+            private int numOfInputs;
+            private bool hasScreen;
+            private bool isHandHeld;
+            private bool hasBattery;
+            private bool isInternetEnabled;
+
 
     }
+
+
 
     class Program
     {
