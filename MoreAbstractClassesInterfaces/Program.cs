@@ -16,8 +16,8 @@ namespace MoreAbstractClassesInterfaces
         bool isHandHeld;
         bool hasBattery;
         bool isInternetEnabled;
-        
-        public virtual void MainTask(string name)
+
+        public void MainTask(string name)
         {
             Console.WriteLine("Device {0}\'s task implemented here.", name);
         }
@@ -28,7 +28,7 @@ namespace MoreAbstractClassesInterfaces
         void Type();
         void Text();
         void Send();
-    } 
+    }
 
     interface ICall
     {
@@ -68,18 +68,86 @@ namespace MoreAbstractClassesInterfaces
             Console.WriteLine("Answering inbound call");
         }
 
-        public Smartphone()
+        public void MainTask()
         {
-            private string name;
-            private string description;
-            private string manufacturer;
-            private int numOfInputs;
-            private bool hasScreen;
-            private bool isHandHeld;
-            private bool hasBattery;
-            private bool isInternetEnabled;
+            Console.WriteLine("Trying this method without overriding");
+        }
 
+        public Smartphone()
+        { 
+        }
 
+        public Smartphone(string phoneName)
+        {
+            Console.WriteLine("Phone name: {0}", phoneName);
+        }
+    }
+
+    class Television
+    {
+        private string name;
+        private int channels;
+        private string model;
+
+        public string Name
+        {
+            get { return this.name; }
+            set
+            {
+                if (value.Equals("Zenith"))
+                    Console.WriteLine("That's not a TV, that's a POS");
+                else
+                {
+                    this.name = value;
+                }
+            }
+        } 
+        public int Channels
+        {
+            get { return this.channels; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Invalid channel number. Every television should have at least one channel.");
+                }
+                else
+                {
+                    this.channels = value;
+                }
+            }
+        }
+
+        public string Model
+        {
+            get { return this.model; }
+            set
+            {
+                if (value.Equals("Samsung"))
+                {
+                    Console.WriteLine("Samsung!!");
+                }
+                else
+                {
+                    this.model = value;
+                }
+            }
+        }
+
+        public Television()
+        { }
+
+        public Television(string tvName, int numChannels, string tvModel)
+        {
+            this.Name = tvName;
+            this.Channels = numChannels;
+            this.Model = tvModel;
+        }
+
+        public void PrintInfo()
+        {
+            Console.WriteLine("****TV***** \nName: {0}\nNumber of channels: {1}\nTV Model: {2}", this.Name, this.Channels, this.Model);
+        }
     }
 
 
@@ -88,6 +156,14 @@ namespace MoreAbstractClassesInterfaces
     {
         static void Main(string[] args)
         {
+            Smartphone iPhone = new Smartphone();
+            Smartphone iPhone2 = new Smartphone("iPhone SE");
+            iPhone2.MainTask();
+            Television tv1 = new Television();
+            tv1.PrintInfo();
+            Television tv2 = new Television("Samsung", 150, "SMARTtv1000");
+            tv2.PrintInfo();
         }
     }
 }
+
