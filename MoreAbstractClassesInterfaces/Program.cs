@@ -8,14 +8,24 @@ namespace MoreAbstractClassesInterfaces
 {
     abstract class Device
     {
-        string name;
-        string description;
-        string manufacturer;
-        int numOfInputs;
-        bool hasScreen;
-        bool isHandHeld;
-        bool hasBattery;
-        bool isInternetEnabled;
+        private string name;
+
+        public Device(string n)
+        {
+            Name = n;
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
 
         public void MainTask(string name)
         {
@@ -73,14 +83,10 @@ namespace MoreAbstractClassesInterfaces
             Console.WriteLine("Trying this method without overriding");
         }
 
-        public Smartphone()
-        { 
-        }
-
-        public Smartphone(string phoneName)
+        public Smartphone(string phoneName) : base(phoneName)
         {
             Console.WriteLine("Phone name: {0}", phoneName);
-        }
+        } 
     }
 
     class Television
@@ -150,13 +156,10 @@ namespace MoreAbstractClassesInterfaces
         }
     }
 
-
-
     class Program
     {
         static void Main(string[] args)
         {
-            Smartphone iPhone = new Smartphone();
             Smartphone iPhone2 = new Smartphone("iPhone SE");
             iPhone2.MainTask();
             Television tv1 = new Television();
