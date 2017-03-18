@@ -25,11 +25,16 @@ namespace MoreAbstractClassesInterfaces
             {
                 name = value;
             }
-        }
+        }   
 
         public void MainTask(string name)
         {
             Console.WriteLine("Device {0}\'s task implemented here.", name);
+        }
+
+        public void MainTask(string name, int i)
+        {
+            Console.WriteLine("Device {0} has {1} apps installed", name, i);
         }
     }
 
@@ -162,6 +167,9 @@ namespace MoreAbstractClassesInterfaces
         {
             Smartphone iPhone2 = new Smartphone("iPhone SE");
             iPhone2.MainTask();
+            iPhone2.MainTask(iPhone2.Name);
+            ((Device)iPhone2).MainTask(iPhone2.Name, 25);
+
             Television tv1 = new Television();
             tv1.PrintInfo();
             Television tv2 = new Television("Samsung", 150, "SMARTtv1000");
